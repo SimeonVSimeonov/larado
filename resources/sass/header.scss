@@ -1,0 +1,9 @@
+header{
+  position: relative;
+  > div {
+    height: 5vh;
+    a {
+      color: $black;
+    }
+  }
+}

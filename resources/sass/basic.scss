@@ -1,0 +1,209 @@
+body {
+  background-color: $body-bg;
+  color: $black;
+  font-family: $font-family-sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  line-height: 1.25;
+}
+*, *:before, *:after {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;outline: none;}
+a {
+  color:$primary;
+  text-decoration: none;
+  webkit-transition: opacity .5s ease-in;
+  -moz-transition: opacity .5s ease-in;
+  -o-transition: opacity .5s ease-in;
+   transition: opacity .5s ease-in;
+  &:not(.btn):hover{opacity: 0.8;}
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+hr {
+  overflow: hidden;
+  display: block;
+  clear:both;
+  margin: 10px auto;
+  border: 0;
+  border-top: 1px solid #B1B1B1;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+div, ul {margin: 0;padding: 0;}
+ul.no-bullet{
+  list-style: none;
+}
+.float-left {float: left !important;}
+.float-right {float: right !important ;}
+.text-left{text-align: left;}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+.clearfix {clear: both;}
+.hide {display: none !important; }
+.invisible {visibility: hidden; }
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+.btn {
+  text-align: center;
+  &.hollow {
+    background-color: transparent;
+    border-width: 0;
+  }
+}
+.wall {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; 
+}
+
+.font-12 {
+  font-size:12px;
+  @include breakpoint($md-only) {
+    font-size:11px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:10px;
+  }
+}
+.font-16 {
+  font-size:16px;
+  @include breakpoint($md-only) {
+    font-size:14px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:13px;
+  }
+}
+.font-18 {
+  font-size:18px;
+  @include breakpoint($sm-only) {
+    font-size:16px;
+  }
+}
+.font-20 {
+  font-size:20px;
+  @include breakpoint($md-only) {
+    font-size:18px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:16px;
+  }
+}
+.font-24 {
+  font-size:24px;
+  @include breakpoint($sm-only) {
+    font-size:20px;
+  }
+}
+.font-28 {
+  font-size:28px;
+  @include breakpoint($sm-only) {
+    font-size:24px;
+  }
+}
+.font-30 {
+  font-size:30px;
+  @include breakpoint($sm-only) {
+    font-size:26px;
+  }
+}
+.font-32 {
+  font-size:32px;
+  @include breakpoint($md-only) {
+    font-size:30px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:26px;
+  }
+}
+.font-36 {
+  font-size:36px;
+  @include breakpoint($sm-only) {
+    font-size:24px;
+  }
+}
+.font-40 {
+  font-size:40px;
+  @include breakpoint($md-only) {
+    font-size:32px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:26px;
+  }
+}
+.font-46 {
+  font-size:46px;
+  @include breakpoint($md-only) {
+    font-size:38px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:32px;
+  }
+}
+.font-54 {
+  font-size:54px;
+  @include breakpoint($md-only) {
+    font-size:46px;
+  }
+  @include breakpoint($sm-only) {
+    font-size:40px;
+  }
+}
+[class^="font-"], [class*=" font-"] { 
+  line-height: 1.5;
+}
+.box-aline-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.menu {
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  &.expanded {
+    li {
+      flex: 1 1 0px;
+    }
+  }
+}
+.alert {
+  border-radius: 12px;
+  border-style:solid;  
+  border-width: 1px;
+  display: inline-block;
+  font-family: 'Soehne Mono';
+  font-size: 14px;
+  margin-bottom: 5vh;
+  padding: 20px;
+  width: 100%;
+  &.alert-warning {
+    border-color: $orange;
+    color: $orange;
+  }
+  &.alert-danger {
+    border-color: $red;
+    color: $red;
+  }
+}
