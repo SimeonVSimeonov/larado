@@ -68,7 +68,7 @@
                 .then(response => {
                     const token = response.data.access_token
                     localStorage.setItem('access_token', token);
-                    this.$router.push({ name: 'dashboard'});
+                    this.$router.push({ name: 'todoList'});
                 })
                 .catch(err => {
                     this.errors = err.response.data
@@ -78,7 +78,7 @@
         },
         beforeCreate() {
             if(localStorage.access_token !== undefined) {
-                this.$router.push({ name: 'dashboard'});
+                this.$router.push({ name: 'my-todo'});
             }
         },
         mounted() {

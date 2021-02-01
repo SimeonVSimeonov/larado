@@ -5,7 +5,8 @@
                 <router-link :to="{ name: 'home' }">My To Do</router-link>
             </div>
         </div>
-        <menu v-show="this.$route.name === 'my-todo'">
+        <menu v-show="this.$route.name === 'todoList'">
+            <logout></logout>
         </menu>
         <menu v-show="this.$route.name === 'home'">
             <router-link :to="{ name: 'login' }">Login</router-link> |

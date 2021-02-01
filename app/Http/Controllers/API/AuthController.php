@@ -75,4 +75,16 @@ class AuthController extends Controller
                 ->json('Server error', $exception->getCode());
         }
     }
+
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        auth()->user()->tokens->each(function ($token, $key){
+            $token->delete();
+        });
+
+        return response()->json('Logged out successfully', 200);
+    }
 }
