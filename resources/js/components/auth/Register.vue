@@ -23,7 +23,7 @@
                         <div class="sm-12">
                             <input id="confirmPassword" type="password" class="form-control @error('confirm_password') is-invalid @enderror"
                                     placeholder="Confirm"
-                                    name="confirm_password" required v-model="user.confirm_password">
+                                    name="password_confirmation" required v-model="user.confirm_password">
                         </div>
 
                         <div class="sm-12">
@@ -55,17 +55,21 @@
         },
         methods: {
             logIn() {
-                axios.post('/api/login', {
+                axios.post('/api/register', {
+                    name: this.user.name,
+                    email: this.user.email,
+                    password: this.user.password,
+                    password_confirmation: this.user.confirm_password
+
+                },{
                     headers: {
-                        'Accept': 'application/json'
-                    },
-                    params: {
-                        "email": this.user.email,
-                        "password": this.user.password
+                        'Content-Type' : 'application/json',
+                        'Accept' : 'application/json',
                     }
                 })
                 .then(response => {
-                    console.error(response)
+                    const token = response.data.access_token
+                    localStorage.setItem('access_token', token);
                 })
                 .catch(err => {
                     console.error(err)
