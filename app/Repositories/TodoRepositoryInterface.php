@@ -5,6 +5,8 @@ namespace App\Repositories;
 
 
 use App\Http\Requests\StoreTodoRequest;
+use App\Http\Requests\UpdateTodoRequest;
+use App\Models\Todo;
 
 interface TodoRepositoryInterface
 {
@@ -30,4 +32,11 @@ interface TodoRepositoryInterface
      * @return bool
      */
     public function deleteTodoById(int $id): bool;
+
+    /**
+     * @param UpdateTodoRequest $request
+     * @param Todo $todo
+     * @return mixed
+     */
+    public function updateTodo(UpdateTodoRequest $request, Todo $todo);
 }

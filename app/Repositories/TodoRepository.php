@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Http\Requests\StoreTodoRequest;
+use App\Http\Requests\UpdateTodoRequest;
 use App\Models\Todo;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -63,5 +64,10 @@ class TodoRepository implements TodoRepositoryInterface
         $todo->delete();
 
         return true;
+    }
+
+    public function updateTodo(UpdateTodoRequest $request, Todo $todo)
+    {
+        return $todo->update($request->validated());
     }
 }

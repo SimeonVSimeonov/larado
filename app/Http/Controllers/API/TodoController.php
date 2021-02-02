@@ -75,11 +75,13 @@ class TodoController extends Controller
      *
      * @param UpdateTodoRequest $request
      * @param Todo $todo
-     * @return void
+     * @return JsonResponse
      */
-    public function update(UpdateTodoRequest $request, Todo $todo)
+    public function update(UpdateTodoRequest $request, Todo $todo): JsonResponse
     {
-        //
+        $this->todoRepository->updateTodo($request, $todo);
+
+        return response()->json($todo, 200);
     }
 
     /**
