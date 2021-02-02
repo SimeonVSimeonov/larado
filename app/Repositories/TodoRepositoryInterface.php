@@ -13,5 +13,9 @@ interface TodoRepositoryInterface
      */
     public function getAllTodosByUser();
 
+    /**
+     * @param StoreTodoRequest $request
+     * @return mixed
+     */
     public function createTodo(StoreTodoRequest $request);
 }
