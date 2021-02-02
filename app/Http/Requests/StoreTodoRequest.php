@@ -27,6 +27,11 @@ class StoreTodoRequest extends FormRequest
         return [
             'user_id' => 'required|uuid',
             'name' => 'required|string|max:64|unique:todos,name,NULL,id,user_id,' . Auth::id(),
+            'tasks' => 'present|array',
+            'tasks.*.name' => 'required|string|max:64|distinct',
+            'tasks.*.deadline' => 'required|date',
+            'tasks.*.is_disabled' => 'required|boolean',
+            'tasks.*.is_completed' => 'required|boolean',
         ];
     }
 }

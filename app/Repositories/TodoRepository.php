@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Http\Requests\StoreTodoRequest;
 use App\Http\Requests\UpdateTodoRequest;
+use App\Models\Task;
 use App\Models\Todo;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +27,11 @@ class TodoRepository implements TodoRepositoryInterface
 
     public function createTodo(StoreTodoRequest $request)
     {
-        return Todo::create($request->validated());
+        $todo = Todo::create($request->validated());
+        $tasks = $this->createTasks($request->tasks);
+        $todo->tasks()->saveMany($tasks);
+
+        return $todo->load('tasks');
     }
 
     /**
@@ -69,5 +74,25 @@ class TodoRepository implements TodoRepositoryInterface
     public function updateTodo(UpdateTodoRequest $request, Todo $todo)
     {
         return $todo->update($request->validated());
+    }
+
+    /**
+     * @param array $request_tasks
+     * @return array
+     */
+    private function createTasks(array $request_tasks): array
+    {
+        $tasks = [];
+        foreach ($request_tasks as $request_task){
+            $task = new Task();
+            $task->name = $request_task['name'];
+            $task->deadline = $request_task['deadline'];
+            $task->is_disabled = $request_task['is_disabled'];
+            $task->is_completed = $request_task['is_completed'];
+
+            array_push($tasks, $task);
+        }
+
+        return $tasks;
     }
 }
