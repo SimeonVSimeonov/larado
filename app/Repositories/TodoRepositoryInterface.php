@@ -18,4 +18,16 @@ interface TodoRepositoryInterface
      * @return mixed
      */
     public function createTodo(StoreTodoRequest $request);
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getTodoById(int $id);
+
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function deleteTodoById(int $id): bool;
 }

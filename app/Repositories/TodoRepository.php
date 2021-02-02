@@ -6,6 +6,9 @@ namespace App\Repositories;
 
 use App\Http\Requests\StoreTodoRequest;
 use App\Models\Todo;
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
 class TodoRepository implements TodoRepositoryInterface
@@ -23,5 +26,31 @@ class TodoRepository implements TodoRepositoryInterface
     public function createTodo(StoreTodoRequest $request)
     {
         return Todo::create($request->validated());
+    }
+
+    /**
+     * @param int $id
+     * @return Builder|Model|mixed|object|null
+     */
+    public function getTodoById(int $id)
+    {
+        return Todo::where('id', '=', $id)
+            ->first();
+    }
+
+    /**
+     * @param int $id
+     * @return bool
+     * @throws Exception
+     */
+    public function deleteTodoById(int $id): bool
+    {
+        $todo = $this->getTodoById($id);
+        if (is_null($todo)){
+            return false;
+        }
+        $todo->delete();
+
+        return true;
     }
 }

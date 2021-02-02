@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTodoRequest;
 use App\Models\Todo;
 use App\Repositories\TodoRepository;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TodoController extends Controller
 {
@@ -53,7 +55,7 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Todo  $todo
+     * @param Todo $todo
      * @return \Illuminate\Http\Response
      */
     public function show(Todo $todo)
@@ -65,7 +67,7 @@ class TodoController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  \App\Models\Todo  $todo
+     * @param Todo $todo
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Todo $todo)
@@ -76,11 +78,21 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Todo  $todo
-     * @return \Illuminate\Http\Response
+     * @param Todo $todo
+     * @return JsonResponse
+     * @throws Exception
      */
     public function destroy(Todo $todo)
     {
-        //
+        if (!Gate::allows('owns-this-todo', $todo)){
+            return response()->json('You do not own this todo!', 403);
+        }
+
+        $is_deleted = $this->todoRepository->deleteTodoById($todo->id);
+        if($is_deleted){
+            return response()->json(null, 204);
+        }
+
+        return response()->json('There is no such todo!', 404);
     }
 }
