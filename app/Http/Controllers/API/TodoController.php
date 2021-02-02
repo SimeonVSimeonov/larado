@@ -9,7 +9,6 @@ use App\Models\Todo;
 use App\Repositories\TodoRepository;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class TodoController extends Controller
