@@ -25,7 +25,7 @@ class UpdateTodoRequest extends FormRequest
     public function rules()
     {
         return [
-            'is_completed' => 'boolean',
+            'is_completed' => 'required|boolean',
             'name' => ['required','string','max:64', new UserTodoName($this->todo)],
         ];
     }
