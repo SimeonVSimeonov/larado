@@ -29,6 +29,12 @@ interface TodoRepositoryInterface
 
     /**
      * @param int $id
+     * @return mixed
+     */
+    public function getTodoByIdWithTasks(int $id);
+
+    /**
+     * @param int $id
      * @return bool
      */
     public function deleteTodoById(int $id): bool;
