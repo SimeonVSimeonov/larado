@@ -27,6 +27,12 @@ class UpdateTodoRequest extends FormRequest
         return [
             'is_completed' => 'required|boolean',
             'name' => ['required','string','max:64', new UserTodoName($this->todo)],
+            'tasks' => 'present|array',
+            'tasks.*.name' => 'required|string|max:64|distinct',
+            'tasks.*.deadline' => 'required|date',
+            'tasks.*.is_disabled' => 'required|boolean',
+            'tasks.*.is_completed' => 'required|boolean',
+            'tasks_delete' => 'present|array'
         ];
     }
 }

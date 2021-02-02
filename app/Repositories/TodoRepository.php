@@ -73,7 +73,12 @@ class TodoRepository implements TodoRepositoryInterface
 
     public function updateTodo(UpdateTodoRequest $request, Todo $todo)
     {
-        return $todo->update($request->validated());
+        $todo->update($request->validated());
+        $todo->tasks()->whereIn('id', $request->tasks_delete)->delete();
+        foreach ($request->tasks as $task){
+            $todo->tasks()->updateOrCreate(['name' => $task['name']], $task);
+        }
+        return $todo->load('tasks');
     }
 
     /**
