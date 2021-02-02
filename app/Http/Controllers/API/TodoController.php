@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTodoRequest;
+use App\Http\Requests\UpdateTodoRequest;
 use App\Models\Todo;
 use App\Repositories\TodoRepository;
 use Exception;
@@ -56,21 +57,27 @@ class TodoController extends Controller
      * Display the specified resource.
      *
      * @param Todo $todo
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function show(Todo $todo)
+    public function show(Todo $todo): JsonResponse
     {
-        //
+        $todo = $this->todoRepository->getTodoByIdWithTasks($todo->id);
+        if ($todo === null) {
+            return response()->json(
+                'There is no such todo!',404);
+        }
+
+        return response()->json($todo, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdateTodoRequest $request
      * @param Todo $todo
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function update(Request $request, Todo $todo)
+    public function update(UpdateTodoRequest $request, Todo $todo)
     {
         //
     }

@@ -40,6 +40,17 @@ class TodoRepository implements TodoRepositoryInterface
 
     /**
      * @param int $id
+     * @return Builder|Model|mixed|object|null
+     */
+    public function getTodoByIdWithTasks(int $id)
+    {
+        return Todo::with('tasks')
+            ->where('id', '=', $id)
+            ->first();
+    }
+
+    /**
+     * @param int $id
      * @return bool
      * @throws Exception
      */
