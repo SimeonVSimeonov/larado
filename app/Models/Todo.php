@@ -17,6 +17,7 @@ class Todo extends Model
      */
     protected $fillable = [
         'id',
+        'user_id',
         'name',
         'is_completed'
     ];
