@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -61,5 +62,13 @@ class User extends Authenticatable
         if ($password !== null && $password !== '') {
             $this->attributes['password'] = Hash::make($password);
         }
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function todos(): HasMany
+    {
+        return $this->hasMany('App\Models\Todo');
     }
 }
