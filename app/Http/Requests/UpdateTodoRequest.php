@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\UserTodoName;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateTodoRequest extends FormRequest
 {
@@ -14,7 +15,10 @@ class UpdateTodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        if (Gate::allows('owns-this-todo', $this->todo)) {
+            return true;
+        }
+        return false;
     }
 
     /**
