@@ -1,44 +1,8 @@
 // Fonts
-@import "fonts";
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
-// Breakpoint
-@import 'breakpoint';
-
-//Mixins
-//@import 'mixins';
-
-//Custom
-@import 'grid';
-@import 'basic';
-
-@import 'header';
-@import 'home';
-@import 'footer';
-
-@import 'release';
-@import 'admin';
-@import 'auth';
-@import 'beacons';
-
-.content {
-  position: relative; 
-}
-.full-vh {
-  min-height: calc( 100vh - 61px);
-}
-.main-wrap{
-  //height: $section-min-height;
-  > div {
-    height: calc(100vh - 175px);
-    //overflow: hidden;
-    position: relative;
-  }
-}
-.img-wrap {
-  background-image: url('/images/phone.svg');
-  height: 100%;
-}
- 
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

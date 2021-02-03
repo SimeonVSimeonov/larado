@@ -1,47 +1,19 @@
-  // Body
-$body-bg: #F8F8FF;
-$global-width: 1296px;
+// Body
+$body-bg: #f8fafc;
+
 // Typography
-$font-family-sans-serif: Soehne Helvetica Neue,Helvetica,Arial,sans-serif; 
+$font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #184B7E;
+$blue: #3490dc;
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
 $red: #e3342f;
-$white: #ffffff;
-$black: #333333;
 $orange: #f6993f;
 $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
-$gray: #E5E5E5;
-$gray-dark: #5E5E5E;
-
-$primary:       $blue !default;
-$secondary:     #539EBD !default;
-
-
-$navbar-bg-color: $gray;
-$navbar-dark-color: $gray-dark;
-$navbar-padding-y: 0;
-$navbar-brand-padding-y: 0;
-
-$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-$section-min-height: 100vh;
-
-$sm: 39.99875em;
-$sm-only: 0 $sm;
-$sm-down: max-width $sm;
-
-$md: 63.99875rem;
-$md-only: 40rem $md;
-$md-down: max-width $md;
-$lg: 1140px;
-$lg-only: $md $lg;
-$lg-down: max-width $lg;
