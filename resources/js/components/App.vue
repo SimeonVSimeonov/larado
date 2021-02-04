@@ -7,8 +7,11 @@
 
 <script>
 import Header from "./Header";
+import store from '../store'
+
 export default {
     name: "App",
+    store,
     components: {Header}
 }
 </script>

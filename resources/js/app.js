@@ -1,10 +1,12 @@
 import Vue from 'vue';
+import Vuex from 'vuex'
 import moment from 'moment'
 import router from './router';
 import App from "./components/App";
 //require('./bootstrap');
-
 import Vuelidate from 'vuelidate'
+
+Vue.use(Vuex)
 Vue.use(Vuelidate)
 Vue.filter('formatDate', function(value) {
     if (value) {
