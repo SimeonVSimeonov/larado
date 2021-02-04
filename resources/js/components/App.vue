@@ -6,13 +6,14 @@
 </template>
 
 <script>
+import Error from "./Error";
 import Header from "./Header";
 import store from '../store'
 
 export default {
     name: "App",
     store,
-    components: {Header}
+    components: {Header, Error}
 }
 </script>
 
