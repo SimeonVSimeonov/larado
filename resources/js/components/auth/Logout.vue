@@ -18,7 +18,7 @@
                     }
                 }).then(response => {
                     localStorage.clear();
-                    this.$router.push({ name: 'home'});
+                    this.$router.push({ name: 'login'});
                 }).catch(err => {
                     console.error(err.response);
                 })
